@@ -17,6 +17,7 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
 - task: Application security testing@2024
   inputs:
     projectName: 'Azuretestsast'
@@ -24,6 +25,5 @@ steps:
     enableSastScan: true
     CheckmarxService: 'CxSAST'
     enableSastBranching: false
-    incScan: false
-    forceScan: true
+    fullTeamName: 'CxServer'
     enableDependencyScan: false
