@@ -58,7 +58,12 @@ public class MailboxController {
   @PostMapping("/mail")
   @ResponseStatus(HttpStatus.CREATED)
   public void sendEmail(@RequestBody Email email) {
-    mailboxRepository.save(email);
+    Email sanitizedEmail = new Email();
+    sanitizedEmail.setRecipient(email.getRecipient());
+    sanitizedEmail.setSubject(email.getSubject());
+    sanitizedEmail.setBody(email.getBody());
+    mailboxRepository.save(sanitizedEmail);
+
   }
 
   @DeleteMapping("/mail")
